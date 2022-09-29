@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app'
-import { getAuth, signInWithRedirect, signInWithPopup, GoogleAuthProvider } from 'firebase/auth'
+import { getAuth, signInWithRedirect, signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword } from 'firebase/auth'
 import { getFirestore, doc, getDoc, setDoc } from 'firebase/firestore'
 
 
@@ -16,23 +16,36 @@ const firebaseConfig = {
 // Initialize Firebase
 const firebaseApp = initializeApp(firebaseConfig);
 
-
-const provider = new GoogleAuthProvider()
-provider.setCustomParameters({
+// Google sign-in/up serviec
+const googleProvider = new GoogleAuthProvider()
+googleProvider.setCustomParameters({
     prompt: 'select_account'
 })
 
+// Returns Firebase Auth object for the app
 export const auth = getAuth()
-export const signInWithGooglePopUp = () => signInWithPopup(auth, provider)
+export const signInWithGooglePopUp = () => signInWithPopup(auth, googleProvider)
+export const signInWithGoogleRedirect = () => signInWithRedirect(auth, googleProvider)
 
+// Creates firestore database
 export const db = getFirestore();
 
-export const createUserDocumentFromAuth = async (userAuth) => {
+// Getting data from auth service and store that inside firestore
+export const createUserDocumentFromAuth = async (
+    userAuth,
+    additionalInforamtion = {}
+) => {
+    if (!userAuth) return
+    // 'users' is name of collection
+    // userAuth.uid is our uid (unique identifier)
     const userDocRef = doc(db, 'users', userAuth.uid)
 
+
+    // gets data of a specific document from collection  
     const userSnapshot = await getDoc(userDocRef)
 
-
+    // Checks whether or not inside of our database does that reference and the data related to that reference even exists
+    // If there is a place in the database for this data give it back... if not creats one
     if (!userSnapshot.exists()) {
         const { displayName, email } = userAuth
         const createdAt = new Date()
@@ -41,10 +54,20 @@ export const createUserDocumentFromAuth = async (userAuth) => {
             await setDoc(userDocRef, {
                 displayName,
                 email,
-                createdAt
+                createdAt,
+                ...additionalInforamtion,
             })
         } catch (error) {
             console.log('error creating the user', error.message)
         }
+        return userDocRef
     }
+}
+
+
+export const createAuthUserWithEmailAndPassword = async (email, password) => {
+    // if email or password is not recieved it will exit
+    // method does not get called
+    if (!email || !password) return
+    return await createUserWithEmailAndPassword(auth, email, password)
 }
