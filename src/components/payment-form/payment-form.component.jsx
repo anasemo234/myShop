@@ -79,7 +79,7 @@ const PaymentForm = () => {
         <h2> Credit Card Payment</h2>
         <hr />
         <CardElement />
-
+        <br />
         <Button buttonType="inverted">Pay Now</Button>
         {paymentLoading ? <h2>Your payment is being processed</h2> : null}
       </FormContainer>
