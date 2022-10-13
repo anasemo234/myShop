@@ -2,6 +2,7 @@ import DirectoryItem from "../directory-item/directory-item.component";
 import ReactSimplyCarouselExample from "../slider/slider";
 import Footer from "../footer/footer";
 import "./directory.styles.scss";
+import ContactUs from "../contact/contact.component";
 
 const Directory = ({ categories }) => {
   return (
@@ -16,6 +17,9 @@ const Directory = ({ categories }) => {
       </div>
       <div>
         <ReactSimplyCarouselExample />
+      </div>
+      <div>
+        <ContactUs />
       </div>
       <div className="footer-content">
         <Footer />
