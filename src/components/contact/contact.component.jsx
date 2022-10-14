@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 import styled from "styled-components";
+import "./contact.css";
 
 export const ContactUs = () => {
   const form = useRef();
@@ -37,17 +38,25 @@ export const ContactUs = () => {
   };
 
   return (
-    <StyledContactForm>
-      <form ref={form} onSubmit={sendEmail}>
-        <label>Name</label>
-        <input type="text" name="user_name" value={userName} />
-        <label>Email</label>
-        <input type="email" name="user_email" value={userEmail} />
-        <label>Message</label>
-        <textarea name="message" value={message} />
-        <input type="submit" value="Send" onSubmit={handleSubmit} />
-      </form>
-    </StyledContactForm>
+    <div className="container">
+      <img
+        className="lessons-logo"
+        src="https://images.unsplash.com/photo-1604286742257-9d211b05b0df?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
+        alt="lessons"
+      />
+
+      <StyledContactForm>
+        <form ref={form} onSubmit={sendEmail}>
+          <label>Name</label>
+          <input type="text" name="user_name" value={userName} />
+          <label>Email</label>
+          <input type="email" name="user_email" value={userEmail} />
+          <label>Message</label>
+          <textarea name="message" value={message} />
+          <input type="submit" value="Send" onSubmit={handleSubmit} />
+        </form>
+      </StyledContactForm>
+    </div>
   );
 };
 
@@ -56,9 +65,11 @@ export default ContactUs;
 // Styles
 const StyledContactForm = styled.div`
   width: 400px;
+  margin-left: 750px;
   form {
     display: flex;
     align-items: flex-start;
+    margin: auto;
     flex-direction: column;
     width: 100%;
     font-size: 16px;
@@ -70,7 +81,7 @@ const StyledContactForm = styled.div`
       border-radius: 5px;
       border: 1px solid rgb(220, 220, 220);
       &:focus {
-        border: 2px solid rgba(0, 206, 158, 1);
+        border: 2px solid #b71c1c;
       }
     }
     textarea {
@@ -84,7 +95,7 @@ const StyledContactForm = styled.div`
       border-radius: 5px;
       border: 1px solid rgb(220, 220, 220);
       &:focus {
-        border: 2px solid rgba(0, 206, 158, 1);
+        border: 2px solid #b71c1c;
       }
     }
     label {
@@ -93,7 +104,7 @@ const StyledContactForm = styled.div`
     input[type="submit"] {
       margin-top: 2rem;
       cursor: pointer;
-      background: rgb(249, 105, 14);
+      background: black;
       color: white;
       border: none;
     }

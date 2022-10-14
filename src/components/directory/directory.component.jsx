@@ -18,7 +18,7 @@ const Directory = ({ categories }) => {
       <div>
         <ReactSimplyCarouselExample />
       </div>
-      <div>
+      <div className="contact">
         <ContactUs />
       </div>
       <div className="footer-content">
