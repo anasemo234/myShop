@@ -1,4 +1,9 @@
 
+.container {
+    margin-top: 40px;
+    margin-bottom: 12em;
+}
+
 
 .lessons-logo {
     width: 500px;
@@ -6,3 +11,84 @@
     border-radius: 50%;
     margin: 0 auto 10px;
 }
+
+.typewriter h1 {
+    overflow: hidden; /* Ensures the content is not revealed until the animation */
+    border-right: .15em solid #b71c1c; /* The typwriter cursor */
+    white-space: nowrap; /* Keeps the content on a single line */
+    margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+    letter-spacing: .15em; /* Adjust as needed */
+    animation: 
+      typing 3.5s steps(40, end),
+      blink-caret .75s step-end infinite;
+  }
+  
+  /* The typing effect */
+  @keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+  }
+  
+  /* The typewriter cursor effect */
+  @keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: #b71c1c; }
+  }
+
+  .type-container {
+    display: flex;
+    margin-left: 33em;
+    margin-top: -300px;
+  }
+
+
+  .typewriter h2 {
+    text-align: center;
+  }
+  
+  .bounce {
+    display: inline-block;
+    position: relative;
+    -moz-animation: bounce 0.5s infinite linear;
+    -o-animation: bounce 0.5s infinite linear;
+    -webkit-animation: bounce 0.5s infinite linear;
+    animation: bounce 0.5s infinite linear;
+  }
+  .arrow {
+      color: #b71c1c;
+    font-size: 1.5em;
+    margin-bottom: -10px;
+  }
+  @-webkit-keyframes bounce {
+      0% { top: 0; }
+      50% { top: -0.2em; }
+      70% { top: -0.3em; }
+      100% { top: 0; }
+  }
+  @-moz-keyframes bounce {
+      0% { top: 0; }
+      50% { top: -0.2em; }
+      70% { top: -0.3em; }
+      100% { top: 0; }
+  }
+  @-o-keyframes bounce {
+      0% { top: 0; }
+      50% { top: -0.2em; }
+      70% { top: -0.3em; }
+      100% { top: 0; }
+  }
+  @-ms-keyframes bounce {
+      0% { top: 0; }
+      50% { top: -0.2em; }
+      70% { top: -0.3em; }
+      100% { top: 0; }
+  }
+  @keyframes bounce {
+      0% { top: 0; }
+      50% { top: -0.2em; }
+      70% { top: -0.3em; }
+      100% { top: 0; }
+  }
+
+
+  

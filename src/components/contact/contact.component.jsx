@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 import styled from "styled-components";
 import "./contact.css";
+import { BsArrowDownCircleFill } from "react-icons/bs";
 
 export const ContactUs = () => {
   const form = useRef();
@@ -26,16 +27,16 @@ export const ContactUs = () => {
       );
   };
 
-  const [userName, setUserName] = useState("");
-  const [userEmail, setUserEmail] = useState("");
-  const [message, setMessage] = useState("");
+  //   const [userName, setUserName] = useState("");
+  //   const [userEmail, setUserEmail] = useState("");
+  //   const [message, setMessage] = useState("");
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    setUserName("");
-    setUserEmail("");
-    setMessage("");
-  };
+  //   const handleSubmit = (event) => {
+  //     event.preventDefault();
+  //     setUserName("");
+  //     setUserEmail("");
+  //     setMessage("");
+  //   };
 
   return (
     <div className="container">
@@ -44,16 +45,24 @@ export const ContactUs = () => {
         src="https://images.unsplash.com/photo-1604286742257-9d211b05b0df?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
         alt="lessons"
       />
+      <div className="type-container">
+        <div class="typewriter">
+          <h1>Getting started with an instrument?</h1>
+          <h2>
+            Message Us! <BsArrowDownCircleFill className="arrow bounce" />
+          </h2>
+        </div>
+      </div>
 
       <StyledContactForm>
         <form ref={form} onSubmit={sendEmail}>
           <label>Name</label>
-          <input type="text" name="user_name" value={userName} />
+          <input type="text" name="user_name" />
           <label>Email</label>
-          <input type="email" name="user_email" value={userEmail} />
+          <input type="email" name="user_email" />
           <label>Message</label>
-          <textarea name="message" value={message} />
-          <input type="submit" value="Send" onSubmit={handleSubmit} />
+          <textarea name="message" />
+          <input type="submit" value="Send" />
         </form>
       </StyledContactForm>
     </div>
