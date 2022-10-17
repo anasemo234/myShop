@@ -1,15 +1,15 @@
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 import emailjs from "@emailjs/browser";
 import styled from "styled-components";
 import "./contact.css";
 import { BsArrowDownCircleFill } from "react-icons/bs";
+import Swal from "sweetalert2";
 
 export const ContactUs = () => {
   const form = useRef();
 
   const sendEmail = (e) => {
     e.preventDefault();
-
     emailjs
       .sendForm(
         "service_yj8otc5",
@@ -20,23 +20,22 @@ export const ContactUs = () => {
       .then(
         (result) => {
           console.log(result.text);
+          Swal.fire({
+            icon: "success",
+            title: "Message Sent Successfully",
+          });
         },
         (error) => {
           console.log(error.text);
+          Swal.fire({
+            icon: "error",
+            title: "Ooops, something went wrong",
+            text: error.text,
+          });
         }
       );
+    e.target.reset();
   };
-
-  //   const [userName, setUserName] = useState("");
-  //   const [userEmail, setUserEmail] = useState("");
-  //   const [message, setMessage] = useState("");
-
-  //   const handleSubmit = (event) => {
-  //     event.preventDefault();
-  //     setUserName("");
-  //     setUserEmail("");
-  //     setMessage("");
-  //   };
 
   return (
     <div className="container">
